@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oliveiras Burger — hambúrguer artesanal, combos e delivery.">
+  <title>Oliveiras Burger | Hambúrguer Artesanal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#inicio" aria-label="Oliveiras Burger">
+        <span class="logo-mark">OB</span>
+        <span>OLIVEIRAS<span>BURGER</span></span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <button class="cart-button" id="openCart" aria-label="Abrir carrinho">
+        🛒 <span>Meu pedido</span><b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow">🔥 O sabor que merece seu momento</span>
+          <h1>BURGER DE<br><em>VERDADE.</em></h1>
+          <p>Hambúrguer artesanal, ingredientes selecionados e aquele sabor caprichado que dá vontade de repetir.</p>
+          <a class="btn primary" href="#cardapio">Pedir agora <span>→</span></a>
+          <div class="hero-badges">
+            <span>✓ Carne artesanal</span>
+            <span>✓ Pão brioche</span>
+            <span>✓ Delivery</span>
+          </div>
+        </div>
+        <div class="hero-burger" aria-hidden="true">
+          <div class="burger-glow"></div>
+          <div class="burger-emoji">🍔</div>
+          <span class="floating-price">a partir de<br><strong>R$ 24,90</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories container" id="cardapio">
+      <div>
+        <span class="section-kicker">NOSSO CARDÁPIO</span>
+        <h2>Escolha seu <span>favorito</span></h2>
+      </div>
+      <div class="category-list" id="categoryList">
+        <button class="category active" data-category="Todos">Todos</button>
+        <button class="category" data-category="Burgers">🍔 Burgers</button>
+        <button class="category" data-category="Combos">🍟 Combos</button>
+        <button class="category" data-category="Porções">🍟 Porções</button>
+        <button class="category" data-category="Bebidas">🥤 Bebidas</button>
+      </div>
+    </section>
+
+    <section class="menu-section container">
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="promo">
+      <div class="container promo-inner">
+        <div>
+          <span class="section-kicker">COMBO DA CASA</span>
+          <h2>Na fome grande,<br><span>vai de combo.</span></h2>
+          <p>Seu burger favorito + batata crocante + bebida gelada.</p>
+        </div>
+        <div class="promo-price"><small>a partir de</small><strong>R$ 34,90</strong><button class="btn light" onclick="filterCategory('Combos')">Ver combos →</button></div>
+      </div>
+    </section>
+
+    <section class="about container" id="sobre">
+      <div class="about-photo"><div class="photo-placeholder">🍔</div></div>
+      <div class="about-copy">
+        <span class="section-kicker">SOBRE A OLIVEIRAS</span>
+        <h2>Feito na chapa.<br><span>Feito com vontade.</span></h2>
+        <p>A Oliveiras Burger nasceu para transformar aquele desejo de comer um hambúrguer de verdade em uma experiência especial. Tudo preparado com cuidado, do primeiro ingrediente ao último molho.</p>
+        <div class="stats">
+          <div><strong>100%</strong><small>Artesanal</small></div>
+          <div><strong>15+</strong><small>Opções no menu</small></div>
+          <div><strong>30min</strong><small>Entrega média</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-inner">
+        <div><span class="section-kicker">FICOU COM FOME?</span><h2>Peça seu burger<br><span>agora mesmo.</span></h2></div>
+        <button class="btn primary" onclick="openCart()">Finalizar meu pedido →</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo"><span class="logo-mark">OB</span><span>OLIVEIRAS<span>BURGER</span></span></div>
+      <p>© 2026 Oliveiras Burger. Sabor que fica.</p>
+      <div class="social">Instagram · WhatsApp</div>
+    </div>
+  </footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart" id="cartPanel" aria-label="Carrinho">
+    <div class="cart-header">
+      <div><span class="section-kicker">SEU PEDIDO</span><h3>Meu carrinho</h3></div>
+      <button class="close" id="closeCart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart"><div>🛒</div><h4>Seu carrinho está vazio</h4><p>Escolha seus favoritos e monte seu pedido.</p></div>
+    </div>
+    <div class="cart-footer">
+      <div class="summary"><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+      <div class="summary"><span>Entrega</span><strong id="delivery">R$ 0,00</strong></div>
+      <div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+      <button class="btn primary full" id="checkoutBtn">Finalizar compra →</button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="productBackdrop">
+    <div class="product-modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="closeProduct">×</button>
+      <div class="modal-product-image" id="modalEmoji">🍔</div>
+      <div class="modal-content">
+        <span class="section-kicker" id="modalCategory">BURGER</span>
+        <h3 id="modalName">Burger</h3>
+        <p id="modalDescription"></p>
+        <div class="modal-price" id="modalPrice">R$ 0,00</div>
+        <div class="addons">
+          <h4>Adicionais</h4>
+          <label><input type="checkbox" data-addon="Queijo extra" data-price="4"> Queijo extra <b>+ R$ 4,00</b></label>
+          <label><input type="checkbox" data-addon="Bacon" data-price="5"> Bacon crocante <b>+ R$ 5,00</b></label>
+          <label><input type="checkbox" data-addon="Molho especial" data-price="2"> Molho especial <b>+ R$ 2,00</b></label>
+        </div>
+        <div class="quantity"><span>Quantidade</span><div><button id="minus">−</button><strong id="qty">1</strong><button id="plus">+</button></div></div>
+        <button class="btn primary full" id="addProduct">Adicionar ao carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="checkoutBackdrop">
+    <div class="checkout-modal">
+      <button class="modal-close" id="closeCheckout">×</button>
+      <span class="section-kicker">ÚLTIMA ETAPA</span>
+      <h3>Finalizar pedido</h3>
+      <p class="muted">Preencha seus dados para receber seu pedido.</p>
+      <form id="checkoutForm">
+        <label>Nome completo<input name="name" required placeholder="Seu nome"></label>
+        <label>WhatsApp<input name="phone" required placeholder="(00) 00000-0000"></label>
+        <label>Endereço completo<input name="address" required placeholder="Rua, número, bairro"></label>
+        <label>Forma de pagamento
+          <select name="payment" required>
+            <option value="">Selecione</option>
+            <option>Pix</option><option>Cartão na entrega</option><option>Dinheiro</option>
+          </select>
+        </label>
+        <label>Observação (opcional)<textarea name="note" rows="2" placeholder="Ex.: tirar cebola..."></textarea></label>
+        <div class="checkout-total"><span>Total do pedido</span><strong id="checkoutTotal">R$ 0,00</strong></div>
+        <button class="btn primary full" type="submit">Confirmar pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
